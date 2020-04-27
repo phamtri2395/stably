@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "mgmcdermott.vscode-language-babel",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "christian-kohler.path-intellisense",
+    "clinyong.vscode-css-modules"
+  ]
+}
