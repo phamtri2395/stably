@@ -1,0 +1,25 @@
+{
+  "name": "@stably/tools",
+  "version": "0.0.0",
+  "description": "A collection of Stably's awesome tools",
+  "engines": {
+    "node": ">= 12.0.0",
+    "yarn": ">= 1.19.0"
+  },
+  "keywords": [
+    "tool",
+    "jest-reporter",
+    "test-results-processor"
+  ],
+  "files": [
+    "jest-reporter/*"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "fs-extra": "^9.0.0",
+    "jest-util": "^25.4.0",
+    "lodash": "^4.17.15",
+    "read-pkg-up": "^7.0.1"
+  },
+  "devDependencies": {}
+}

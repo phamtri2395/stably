@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Stably monorepo",
-  "engine": {
+  "engines": {
     "node": ">= 12.0.0",
     "yarn": ">= 1.19.0"
   },
@@ -19,9 +19,9 @@
     "bootstrap": "lerna bootstrap && lerna run --parallel --no-private prepare",
     "clean": "lerna run --parallel clean",
     "build": "lerna run --parallel build",
-    "test": "lerna run --parallel --stream test",
-    "test:cov": "lerna run --parallel --stream test:cov",
-    "test:e2e": "lerna run --parallel --stream test:e2e",
+    "test": "lerna run --parallel --stream test -- --color --verbose --passWithNoTests",
+    "test:cov": "lerna run --parallel --stream test:cov -- --color --verbose --passWithNoTests --coverage",
+    "test:e2e": "lerna run --parallel --stream test:e2e -- --color --verbose --passWithNoTests",
     "lerna:changed": "lerna changed --json > lerna-changes.json",
     "lerna:version": "lerna version --conventional-commits --no-push",
     "lerna:publish": "lerna publish from-package",

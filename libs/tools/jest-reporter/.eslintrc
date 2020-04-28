@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "plugins": ["security"],
+  "extends": ["plugin:security/recommended", "airbnb"],
+  "parser": "esprima",
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "settings": {
+    "import/extensions": [".js", ".jsx", ".json"],
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  }
+}
