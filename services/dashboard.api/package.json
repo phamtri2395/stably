@@ -27,10 +27,8 @@
     "@nestjs/common": "^7.0.9",
     "@nestjs/core": "^7.0.9",
     "@nestjs/platform-fastify": "^7.0.9",
+    "@nestjs/schedule": "^0.3.1",
     "@nestjs/swagger": "^4.5.3",
-    "@nestjs/typeorm": "^7.0.0",
-    "@nestjsx/crud": "^4.4.5",
-    "@nestjsx/crud-typeorm": "^4.4.5",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
     "fastify-swagger": "^2.5.1",
@@ -39,8 +37,7 @@
     "read-pkg-up": "^7.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.5",
-    "tsconfig-paths": "^3.9.0",
-    "typeorm": "^0.2.24"
+    "tsconfig-paths": "^3.9.0"
   },
   "devDependencies": {
     "@nestjs/testing": "^7.0.9",
