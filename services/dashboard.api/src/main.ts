@@ -44,9 +44,10 @@ async function bootstrap(): Promise<void> {
 
   // start http server
   await app.listen(HTTP_PORT, HTTP_HOST);
+  const url = await app.getUrl();
 
-  logger.log(`HTTP server is up & running on http://${HTTP_HOST}:${HTTP_PORT}`);
-  logger.log(`Swagger on http://${HTTP_HOST}:${HTTP_PORT}${SWAGGER_URL}`);
+  logger.log(`HTTP server is up & running on ${url}`);
+  logger.log(`Swagger on ${url}${SWAGGER_URL}`);
 }
 
 bootstrap();
