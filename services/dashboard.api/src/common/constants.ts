@@ -17,3 +17,9 @@ export const DEFAULT_HTTP_PORT = 50001;
 export const DEFAULT_SWAGGER_URL = '/doc';
 
 /* -------------------------- DATABASE CONNECTIONS -------------------------- */
+
+export const DEFAULT_MONGO_URI = 'mongodb://localhost/stably';
+
+/* --------------------------- EXTERNAL ENDPOINTS --------------------------- */
+
+export const BOOK_TICKER_API = 'https://api.binance.com/api/v3/ticker/bookTicker';

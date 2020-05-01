@@ -33,6 +33,12 @@
         "ts": "never",
         "tsx": "never"
       }
+    ],
+    "@typescript-eslint/consistent-type-assertions": [
+      "error",
+      {
+        "assertionStyle": "angle-bracket"
+      }
     ]
   }
 }
