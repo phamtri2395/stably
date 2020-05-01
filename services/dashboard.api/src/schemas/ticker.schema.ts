@@ -8,7 +8,7 @@ export const TickerSchema = createSchema(
     askPrice: Type.number({ required: true }),
     askQty: Type.number({ required: true }),
   },
-  { timestamps: true },
+  { collection: 'tickers', timestamps: true },
 );
 
 export type Ticker = ExtractDoc<typeof TickerSchema>;

@@ -2,9 +2,12 @@ import { Injectable, Logger, HttpService } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { map } from 'ramda';
 
 import { BOOK_TICKER_API } from '@common/constants';
-import { Ticker, TickerModel } from '@schemas';
+import {
+  Ticker, TickerModel, BidAskSpread, BidAskSpreadModel,
+} from '@schemas';
 
 @Injectable()
 export class BinanceService {
@@ -12,6 +15,7 @@ export class BinanceService {
 
   constructor(
     @InjectModel(TickerModel.name) private readonly tickerModel: Model<Ticker>,
+    @InjectModel(BidAskSpreadModel.name) private readonly bidAskSpreadModel: Model<BidAskSpread>,
     private readonly http: HttpService,
   ) {}
 
@@ -20,9 +24,18 @@ export class BinanceService {
     this.logger.debug('Getting ticker book...');
 
     const { data: tickers } = await this.http.get(BOOK_TICKER_API).toPromise();
+    const spreads = map(
+      ({ symbol, askPrice, bidPrice }) => ({
+        symbol,
+        askPrice,
+        bidPrice,
+        spread: askPrice - bidPrice,
+      }),
+      <BidAskSpread[]>tickers,
+    );
 
-    await this.tickerModel.create(tickers);
+    await Promise.all([this.tickerModel.create(tickers), this.bidAskSpreadModel.create(spreads)]);
 
-    this.logger.debug(`Inserted ${tickers.length} records ✨`);
+    this.logger.debug(`Processed ${tickers.length} records ✨`);
   }
 }
