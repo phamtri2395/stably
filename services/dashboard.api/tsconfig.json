@@ -6,7 +6,7 @@
     "paths": {
       "@common/*": ["src/common/*"],
       "@modules/*": ["src/modules/*"],
-      "@entities": ["src/entities/index.ts"]
+      "@schemas": ["src/schemas/index.ts"]
     },
     "target": "es2015",
     "module": "commonjs",
