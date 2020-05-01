@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from 'nestjs-config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { CONFIG_PATH_GLOB } from '@common/constants';
+
+import { MigrationModule } from '@modules/migration';
 import { BinanceModule } from '@modules/binance';
 
 import { AppController } from './app.controller';
@@ -17,6 +19,7 @@ import { AppController } from './app.controller';
       }),
       inject: [ConfigService],
     }),
+    MigrationModule,
     BinanceModule],
   controllers: [AppController],
 })
