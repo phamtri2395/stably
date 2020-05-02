@@ -3,6 +3,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { TickerModel, BidAskSpreadModel } from '@schemas';
+import { SpreadModule } from '@modules/spread';
 import { BinanceService } from './binance.service';
 
 @Module({
@@ -10,6 +11,7 @@ import { BinanceService } from './binance.service';
     MongooseModule.forFeature([TickerModel, BidAskSpreadModel]),
     ScheduleModule.forRoot(),
     HttpModule,
+    SpreadModule,
   ],
   providers: [BinanceService],
   controllers: [],

@@ -6,8 +6,9 @@ import { map } from 'ramda';
 
 import { BOOK_TICKER_API } from '@common/constants';
 import {
-  Ticker, TickerModel, BidAskSpread, BidAskSpreadModel,
+  Ticker, TickerModel, BidAskSpread, BidAskSpreadModel, 
 } from '@schemas';
+import { SpreadGateway } from '@modules/spread';
 
 @Injectable()
 export class BinanceService {
@@ -17,6 +18,7 @@ export class BinanceService {
     @InjectModel(TickerModel.name) private readonly tickerModel: Model<Ticker>,
     @InjectModel(BidAskSpreadModel.name) private readonly bidAskSpreadModel: Model<BidAskSpread>,
     private readonly http: HttpService,
+    private readonly spreadGateway: SpreadGateway,
   ) {}
 
   @Cron(CronExpression.EVERY_5_SECONDS)
@@ -24,15 +26,19 @@ export class BinanceService {
     this.logger.debug('Getting ticker book...');
 
     const { data: tickers } = await this.http.get(BOOK_TICKER_API).toPromise();
-    const spreads = map(
-      ({ symbol, askPrice, bidPrice }) => ({
+    const spreads = map(({ symbol, askPrice, bidPrice }) => {
+      const spread = askPrice - bidPrice;
+      const record = {
         symbol,
-        askPrice,
-        bidPrice,
-        spread: askPrice - bidPrice,
-      }),
-      <BidAskSpread[]>tickers,
-    );
+        askPrice: parseFloat(askPrice.toString()),
+        bidPrice: parseFloat(bidPrice.toString()),
+        spread,
+      };
+
+      this.spreadGateway.updateSpread(<BidAskSpread>record);
+
+      return record;
+    }, <BidAskSpread[]>tickers);
 
     await Promise.all([this.tickerModel.create(tickers), this.bidAskSpreadModel.create(spreads)]);
 

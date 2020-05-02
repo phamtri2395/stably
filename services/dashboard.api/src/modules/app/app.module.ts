@@ -6,6 +6,7 @@ import { CONFIG_PATH_GLOB } from '@common/constants';
 
 import { MigrationModule } from '@modules/migration';
 import { BinanceModule } from '@modules/binance';
+import { SpreadModule } from '@modules/spread';
 
 import { AppController } from './app.controller';
 
@@ -20,7 +21,9 @@ import { AppController } from './app.controller';
       inject: [ConfigService],
     }),
     MigrationModule,
-    BinanceModule],
+    BinanceModule,
+    SpreadModule,
+  ],
   controllers: [AppController],
 })
 export class AppModule {}
