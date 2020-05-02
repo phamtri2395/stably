@@ -23,3 +23,7 @@ export const DEFAULT_MONGO_URI = 'mongodb://localhost/stably';
 /* --------------------------- EXTERNAL ENDPOINTS --------------------------- */
 
 export const BOOK_TICKER_API = 'https://api.binance.com/api/v3/ticker/bookTicker';
+
+/* ---------------------------------- MISC ---------------------------------- */
+
+export const SPREAD_UPDATED_EVENT = 'SPREAD_UPDATED_EVENT';
