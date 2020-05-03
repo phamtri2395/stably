@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@commons/*": ["./src/commons/*"],
+      "@common/*": ["./src/common/*"],
+      "@api": ["./src/api/index.ts"],
       "@containers/*": ["./src/containers/*"],
       "@components/*": ["./src/components/*"]
     },

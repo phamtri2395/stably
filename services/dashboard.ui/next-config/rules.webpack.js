@@ -19,9 +19,9 @@ exports.sassRule = {
   loader: 'sass-resources-loader',
   options: {
     resources: [
-      path.resolve(__dirname, '../src/commons/styles/colors.scss'),
-      path.resolve(__dirname, '../src/commons/styles/sizes.scss'),
-      path.resolve(__dirname, '../src/commons/styles/mixins.scss'),
+      path.resolve(__dirname, '../src/common/styles/animations.scss'),
+      path.resolve(__dirname, '../src/common/styles/breakpoints.scss'),
+      path.resolve(__dirname, '../src/common/styles/designs.scss'),
     ],
   },
 };

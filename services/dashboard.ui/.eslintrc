@@ -9,6 +9,13 @@
     "React": "readonly"
   },
   "rules": {
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": ["@common", "@api", "@components", "@containers"]
+      }
+    ],
     "react/jsx-filename-extension": [
       "error",
       {
