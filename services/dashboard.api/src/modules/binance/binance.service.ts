@@ -6,7 +6,7 @@ import { map } from 'ramda';
 
 import { BOOK_TICKER_API } from '@common/constants';
 import {
-  Ticker, TickerModel, BidAskSpread, BidAskSpreadModel, 
+  Ticker, TickerModel, BidAskSpread, BidAskSpreadModel,
 } from '@schemas';
 import { SpreadGateway } from '@modules/spread';
 
@@ -35,12 +35,15 @@ export class BinanceService {
         spread,
       };
 
-      this.spreadGateway.updateSpread(<BidAskSpread>record);
-
       return record;
     }, <BidAskSpread[]>tickers);
 
-    await Promise.all([this.tickerModel.create(tickers), this.bidAskSpreadModel.create(spreads)]);
+    const [_, spreadRecords] = await Promise.all([
+      this.tickerModel.create(tickers),
+      this.bidAskSpreadModel.create(spreads),
+    ]);
+
+    spreadRecords.forEach((record) => this.spreadGateway.updateSpread(record));
 
     this.logger.debug(`Processed ${tickers.length} records ✨`);
   }
