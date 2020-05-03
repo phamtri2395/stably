@@ -1,0 +1,46 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      /**
+       * Import Ant design components on demand: https://ant.design/docs/react/getting-started#Import-on-Demand
+       */
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ".",
+        /**
+         * Alias modules [babel-plugin-module-resolver's alias](https://github.com/tleunen/babel-plugin-module-resolver)
+         */
+        "alias": {
+          "@commons": "./src/commons",
+          "@containers": "./src/containers",
+          "@components": "./src/components"
+        },
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+      }
+    ],
+    [
+      /**
+       * Support decorator syntax in project: https://babeljs.io/docs/en/babel-plugin-proposal-decorators
+       *
+       * Legacy option is required to enable the ability to mutate class's properties of a decorator: https://github.com/microsoft/TypeScript/issues/4881
+       */
+      "@babel/plugin-proposal-decorators",
+      { "legacy": true }
+    ],
+    [
+      /**
+       * Support class properties syntax: https://github.com/tc39/proposal-class-fields
+       */
+      "@babel/plugin-proposal-class-properties",
+      { "loose": true }
+    ]
+  ]
+}
