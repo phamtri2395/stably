@@ -8,6 +8,5 @@ const API_BASE = url.format({
 });
 
 export const fetcher = (pathname: string, init?: RequestInit): Promise<Response> => {
-  console.log('API_BASE', API_BASE + pathname);
   return fetch(API_BASE + pathname, init).then((res) => res.json());
 };
