@@ -1,0 +1,19 @@
+{
+  "env": {
+    "node": true,
+    "jest": true,
+    "browser": true
+  },
+  "extends": "../../.eslintrc",
+  "globals": {
+    "React": "readonly"
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".tsx"]
+      }
+    ]
+  }
+}
