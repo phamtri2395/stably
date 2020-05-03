@@ -1,7 +1,17 @@
 import useSWR, { responseInterface } from 'swr';
 
-export const getSpreadHistory = (): responseInterface<object, object> => {
-  const initialData = null;
+import { DEFAULT_SPREAD_LIMIT } from '@common/constants';
 
-  return useSWR('127.0.0.1/spreads?symbol=BTCUSDC', { initialData });
+export interface Spread {
+  _id: string;
+  symbol: string;
+  askPrice: number;
+  bidPrice: number;
+  spread: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export const useGetSpread = (symbol: string, limit?: number): responseInterface<Spread[], object> => {
+  return useSWR(`/spreads?symbol=${symbol}&limit=${limit || DEFAULT_SPREAD_LIMIT}`);
 };

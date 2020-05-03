@@ -25,7 +25,7 @@ const DesktopLayout = ({ children }: InferProps<typeof DesktopLayout>): JSX.Elem
 );
 
 DesktopLayout.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 DesktopLayout.defaultProps = {

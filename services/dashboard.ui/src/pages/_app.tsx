@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { BrowserView, MobileView } from 'react-device-detect';
 
 import { GLOBAL_TITLE } from '@common/constants';
+import { Core } from '@containers/core';
 import { DesktopLayout } from '@containers/layout';
 
 class CustomApp extends App<AppProps> {
@@ -10,7 +11,7 @@ class CustomApp extends App<AppProps> {
     const { Component } = this.props;
 
     return (
-      <div>
+      <Core>
         <Head>
           <title>{GLOBAL_TITLE}</title>
         </Head>
@@ -22,7 +23,7 @@ class CustomApp extends App<AppProps> {
         </BrowserView>
 
         <MobileView>Mobile UI is comming soon</MobileView>
-      </div>
+      </Core>
     );
   };
 }
