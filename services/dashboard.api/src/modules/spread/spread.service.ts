@@ -10,7 +10,11 @@ export class SpreadService {
 
   constructor(@InjectModel(BidAskSpreadModel.name) private readonly bidAskSpreadModel: Model<BidAskSpread>) {}
 
-  public findAllBySymbol(symbol: string): Promise<BidAskSpread[]> {
-    return this.bidAskSpreadModel.find({ symbol }).sort({ createdAt: -1 }).exec();
+  public findAllBySymbol(symbol: string, limit?: number): Promise<BidAskSpread[]> {
+    return this.bidAskSpreadModel
+      .find({ symbol })
+      .sort({ createdAt: -1 })
+      .limit(limit || 20)
+      .exec();
   }
 }
