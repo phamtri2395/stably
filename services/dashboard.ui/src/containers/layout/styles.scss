@@ -1,0 +1,49 @@
+.layout {
+  height: 100vh;
+}
+
+.header {
+  padding: 0;
+  z-index: 9;
+
+  background-color: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+
+  font-family: $title-font-family;
+  color: $font-color;
+}
+
+.menu {
+  line-height: 64px;
+  text-align: center;
+}
+
+.logo {
+  padding-left: $size-3;
+
+  color: $font-color;
+  text-decoration: none;
+  font-size: $font-size-3;
+  font-weight: 500;
+
+  img {
+    height: $size-5;
+    margin-right: $size-3;
+  }
+
+  &:hover {
+    color: $font-color;
+  }
+}
+
+.content {
+  padding: $size-3;
+  background-color: #fff;
+
+  font-family: $content-font-family;
+  color: $font-color;
+}
+
+.footer {
+  text-align: center;
+}

@@ -19,7 +19,8 @@
          * Alias modules [babel-plugin-module-resolver's alias](https://github.com/tleunen/babel-plugin-module-resolver)
          */
         "alias": {
-          "@commons": "./src/commons",
+          "@common": "./src/common",
+          "@api": "./src/api",
           "@containers": "./src/containers",
           "@components": "./src/components"
         },

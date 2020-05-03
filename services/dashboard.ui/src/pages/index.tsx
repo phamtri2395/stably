@@ -1,1 +1,3 @@
-export default (): React.ReactElement => <div>Hello World</div>;
+import { BidAskSpread } from '@containers/bid-ask-spread';
+
+export default (): React.ReactElement => <BidAskSpread />;
