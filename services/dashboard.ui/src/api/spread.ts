@@ -1,4 +1,4 @@
-import useSWR, { responseInterface } from 'swr';
+import useSWR, { responseInterface, ConfigInterface } from 'swr';
 
 import { DEFAULT_SPREAD_LIMIT } from '@common/constants';
 
@@ -12,6 +12,14 @@ export interface Spread {
   updatedAt: Date;
 }
 
-export const useGetSpread = (symbol: string, limit?: number): responseInterface<Spread[], object> => {
-  return useSWR(`/spreads?symbol=${symbol}&limit=${limit || DEFAULT_SPREAD_LIMIT}`);
+export const useGetSpread = ({
+  symbol,
+  limit = DEFAULT_SPREAD_LIMIT,
+  options,
+}: {
+  symbol: string;
+  limit?: number;
+  options?: ConfigInterface;
+}): responseInterface<Spread[], object> => {
+  return useSWR(`/spreads?symbol=${symbol}&limit=${limit}`, options);
 };

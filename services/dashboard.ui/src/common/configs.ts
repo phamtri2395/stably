@@ -8,7 +8,7 @@ export const swrConfig: ConfigInterface = {
   refreshInterval: 0,
   shouldRetryOnError: false,
   errorRetryInterval: 0,
-  revalidateOnFocus: false,
+  revalidateOnFocus: true,
   dedupingInterval: 300,
 };
 
