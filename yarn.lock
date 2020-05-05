@@ -2880,6 +2880,11 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/lodash@^4.14.150":
+  version "4.14.150"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.150.tgz#649fe44684c3f1fcb6164d943c5a61977e8cf0bd"
+  integrity sha512-kMNLM5JBcasgYscD9x/Gvr6lTAv2NVgsKtet/hm93qMyf/D1pt+7jeEZklKJKxMVmXjxbRVQQGfqDSfipYCO6w==
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -7015,6 +7020,11 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+
+from-exponential@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/from-exponential/-/from-exponential-1.0.0.tgz#feea3f96dc6861dca784599e391c24bdb48d28f2"
+  integrity sha512-lr7d141V95FOV+W9B2f4D5gNM2Tm6Qk5GOBGwr6ZukwhpWHldqJw30xI+UkVBYi1cQu3afLQQD9QEgxpehT9wg==
 
 from2@^2.1.0:
   version "2.3.0"
@@ -11814,6 +11824,14 @@ pretty-format@^25.5.0:
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
 
+pretty-num@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/pretty-num/-/pretty-num-0.4.0.tgz#eb006bdf401dffbabfe7bb3de43fb9214e39533f"
+  integrity sha512-bvqvuzRfEjCs5FjVOnAAoJPTnWxsUVYvypWht0cEjLm3rBQUzxqHZ3Ocp01BNZT6KD38IouBalFc1oJVAo46tg==
+  dependencies:
+    from-exponential "^1.0.0"
+    thousands "^1.0.1"
+
 private@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
@@ -14261,6 +14279,11 @@ thenify-all@^1.0.0:
   integrity sha1-5p44obq+lpsBCCB5eLn2K4hgSDk=
   dependencies:
     any-promise "^1.0.0"
+
+thousands@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/thousands/-/thousands-1.0.1.tgz#59eb5b6d179ab20a42d9d1bdd05c2ca07fbc2d94"
+  integrity sha1-WetbbReasgpC2dG90FwsoH+8LZQ=
 
 throat@^5.0.0:
   version "5.0.0"
