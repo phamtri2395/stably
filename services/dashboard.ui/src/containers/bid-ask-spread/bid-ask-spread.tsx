@@ -3,7 +3,7 @@ import {
   Row, Col, Timeline, Statistic, Select,
 } from 'antd';
 import { format } from 'date-fns/fp';
-import { getOr, reverse } from 'lodash/fp';
+import { getOr, reverse, take } from 'lodash/fp';
 
 import { SOCKET_SPREAD_EVENT } from '@common/constants';
 import { SupportedPairs } from '@common/configs';
@@ -13,18 +13,44 @@ import { useGetSpread, Spread } from '@api';
 
 import styles from './styles.scss';
 
+const socket = createSocketClient();
 export const BidAskSpread: React.FC = () => {
-  let socket;
-
   const [selectedPair, setSelectedPair] = useState(SupportedPairs[0]);
   const [spreadHistory, setSpreadHistory] = useState([]);
+  const [socketAt, setSocketAt] = useState(Date.now());
+  const [socketData, setSocketData] = useState(null);
+
+  // socket handler
+  useEffect(() => {
+    const event = SOCKET_SPREAD_EVENT(selectedPair);
+    socket.on(event, (data: Spread) => {
+      setSocketData(data);
+      setSocketAt(Date.now());
+    });
+
+    return (): void => {
+      socket.off(event);
+      setSocketData(null);
+    };
+  }, [selectedPair]);
+  // clean up socket on unmount
+  useEffect(() => {
+    return (): void => {
+      socket.close();
+    };
+  }, []);
 
   // fetch bid-ask spread history
-  const { data } = useGetSpread({ symbol: selectedPair, options: { revalidateOnFocus: false } });
+  const { data: spreadHistoryData } = useGetSpread({ symbol: selectedPair, options: { revalidateOnFocus: false } });
   useEffect(() => {
-    setSpreadHistory(data);
-  }, [data, selectedPair]);
+    setSpreadHistory(spreadHistoryData);
+  }, [selectedPair, spreadHistoryData]);
   const currentSpread = getOr(NaN, '0.spread', spreadHistory);
+
+  // update bid-ask spread via websocket
+  useEffect(() => {
+    if (socketData) setSpreadHistory(take(spreadHistory.length, [socketData, ...spreadHistory]));
+  }, [socketAt]);
 
   const handleSelectPair = (pair: string): void => {
     setSelectedPair(pair);
